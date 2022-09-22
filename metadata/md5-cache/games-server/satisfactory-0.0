@@ -1,0 +1,13 @@
+BDEPEND=games-server/steamcmd
+DEFINED_PHASES=install setup unpack
+DEPEND=acct-group/satisfactory acct-user/satisfactory
+DESCRIPTION=Satisfactory
+EAPI=8
+INHERIT=steamcmd
+KEYWORDS=~amd64
+LICENSE=GPL-3
+PROPERTIES=live
+RDEPEND=acct-group/satisfactory acct-user/satisfactory
+SLOT=0
+_eclasses_=steamcmd	aa79b2dcefc72a1291c5de45f7aa4eb4
+_md5_=a72c23b3233271904768eada14ec694e
