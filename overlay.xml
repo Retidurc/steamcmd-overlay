@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE repositories SYSTEM "/dtd/repositories.dtd">
+<repositories encoding="unicode" version="1.1">
+        <repo quality="experimental" status="unofficial">
+                <name>steamcmd-overlay</name>
+                <description lang="en">Bridge steamcmd and portage</description>
+                <homepage>https://github.com/Retidurc/steamcmd-overlay</homepage>
+                <owner type="person">
+                        <email>retidurc@silvernight.social</email>
+                        <name>Retidurc Silvernight</name>
+                </owner>
+                <source type="git">https://github.com/Retidurc/steamcmd-overlay.git</source>
+                <feed>https://github.com/Retidurc/steamcmd-overlay/commits/main.atom</feed>
+        </repo>
+</repositories>
