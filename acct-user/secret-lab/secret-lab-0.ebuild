@@ -7,7 +7,7 @@ inherit acct-user
 
 DESCRIPTION="User for Satisfactory server"
 ACCT_USER_ID=-1
-ACCT_USER_GROUPS=( secretlab )
+ACCT_USER_GROUPS=( secret-lab )
 ACCT_USER_HOME=/var/lib/secretlab
 ACCT_USER_HOME_PERMS=0700
 acct-user_add_deps
