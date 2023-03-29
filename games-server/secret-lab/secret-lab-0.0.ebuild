@@ -13,6 +13,6 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 DEPEND="
-        acct-group/secretlab
-        acct-user/secretlab"
+        acct-group/secret-lab
+        acct-user/secret-lab"
 RDEPEND="${DEPEND}"
