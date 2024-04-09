@@ -28,9 +28,11 @@ BDEPEND="games-server/steamcmd"
 # @DESCRIPTION:
 # Fetch from steamcmd
 steamcmd_src_unpack() {
-#		${T}/steamcmd/steamcmd.sh  +login anonymous +quit 
+#		${T}/steamcmd/steamcmd.sh  +login anonymous +quit
+		addpredict /opt/steamcmd/.writable
+		addpredict /opt/steamcmd/steam_appid.txt
 		einfo "unpacking app id ${ESTEAM_APPID} into ${WORKDIR}"
-		"${T}/steamcmd/steamcmd.sh" +force_install_dir "${S}" +login anonymous +app_update ${ESTEAM_APPID}  +quit
+		"/opt/steamcmd/steamcmd.sh" +force_install_dir "${S}" +login anonymous +app_update ${ESTEAM_APPID}  +quit
 }
 
 # @FUNCTION: steamcmd_src_install
@@ -45,7 +47,7 @@ steamcmd_src_install(){
 # @DESCRIPTION:
 # Copy steamcmd into the temp directory, otherwise we get sandbox violations
 steamcmd_pkg_setup(){
-        cp /opt/steamcmd "${T}" -r
+        /opt/steamcmd/steamcmd.sh +quit
 }
 
 _STEAMCMD_ECLASS=1
