@@ -23,14 +23,27 @@ BDEPEND="games-server/steamcmd"
 # @DESCRIPTION:
 # The steam app id
 
+# @FUNCTION: steamcmd_pkg_setup
+# @DESCRIPTION:
+# Call steamcmd one and exit immediatly, if needed, steamcmd will self-update at this non sandboxed stage.
+steamcmd_pkg_setup(){
+	einfo "Trigger possible self-update by starting SteamCMD once"
+        /opt/steamcmd/steamcmd.sh +quit
+	einfo "SteamCDM is now up-to-date"
+}
+
 # @FUNCTION: steamcmd_src_unpack
 # @USAGE: I dunno
 # @DESCRIPTION:
 # Fetch from steamcmd
 steamcmd_src_unpack() {
-#		${T}/steamcmd/steamcmd.sh  +login anonymous +quit 
+		#We need to addpredict thoses two files
+		addpredict /opt/steamcmd/.writable #SteamCMD test if it's own directory is writable
+		addpredict /opt/steamcmd/steam_appid.txt # Not sure why steamcmd need this one but fair enought, addpredict it. Otherwise, sandbox violation
+
 		einfo "unpacking app id ${ESTEAM_APPID} into ${WORKDIR}"
-		"${T}/steamcmd/steamcmd.sh" +force_install_dir "${S}" +login anonymous +app_update ${ESTEAM_APPID}  +quit
+
+		"/opt/steamcmd/steamcmd.sh" +force_install_dir "${S}" +login anonymous +app_update ${ESTEAM_APPID}  +quit
 }
 
 # @FUNCTION: steamcmd_src_install
@@ -39,13 +52,6 @@ steamcmd_src_unpack() {
 steamcmd_src_install(){
 	insinto "/var/lib/${PN}"
 	doins -r * "/var/lib/${PN}"
-}
-
-# @FUNCTION: steamcmd_pkg_setup
-# @DESCRIPTION:
-# Copy steamcmd into the temp directory, otherwise we get sandbox violations
-steamcmd_pkg_setup(){
-        cp /opt/steamcmd "${T}" -r
 }
 
 _STEAMCMD_ECLASS=1
